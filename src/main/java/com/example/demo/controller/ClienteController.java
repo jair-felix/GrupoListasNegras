@@ -17,7 +17,7 @@ import javax.validation.Valid;
 public class ClienteController {
 
     private static final String INDEX ="cliente/create"; 
-    private static String MODEL_CONTACT="client";
+    private static String MODEL_CONTACT="cliente";
     private final ClienteRepository clientsData;
 
 
