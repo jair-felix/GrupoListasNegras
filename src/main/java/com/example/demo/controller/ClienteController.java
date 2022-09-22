@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Cliente;
@@ -42,6 +45,20 @@ public class ClienteController {
             model.addAttribute(MODEL_CONTACT, objCliente);
             model.addAttribute("mensaje", "Se registro un cliente");
         }
+        return INDEX;
+    }
+
+    @GetMapping("/cliente/index")
+    public String index(
+        @RequestParam(defaultValue="") String searchName,
+        Model model){
+        List<Cliente> listClients = null;
+        if(searchName.isEmpty()){
+            listClients = this.clientsData.getAllActiveClientes();
+        }else{
+            //listClients = this.clientsData.getAllActiveClientesBySearch(searchName);
+        }
+        model.addAttribute("Clients",listClients);
         return INDEX;
     }
     
