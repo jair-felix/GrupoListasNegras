@@ -59,7 +59,7 @@ public class ClienteController {
             //listClients = this.clientsData.getAllActiveClientesBySearch(searchName);
         }
         model.addAttribute("Clients",listClients);
-        return INDEX;
+        return "cliente/index";
     }
     
 }
