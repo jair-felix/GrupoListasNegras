@@ -33,4 +33,5 @@ public class Cliente {
     private String Apellidos;
     private String CalifSBS;
     private BigDecimal precio;
+    private String status;
 }
