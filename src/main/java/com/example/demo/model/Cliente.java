@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -31,4 +33,5 @@ public class Cliente {
     private String Apellidos;
     private String CalifSBS;
     private BigDecimal precio;
+    private String status;
 }
