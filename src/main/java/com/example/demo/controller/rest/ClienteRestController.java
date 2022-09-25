@@ -35,4 +35,40 @@ public class ClienteRestController {
             clientsData.findAll(), HttpStatus.OK);
     }
 
+    @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Integer> create(@RequestBody Cliente e){
+        clientsData.save(e);
+        clientsData.flush();
+        return new ResponseEntity<Integer>(e.getId(),HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Cliente> Clientes(@PathVariable int id){
+        Optional<Cliente> optinalEntity = clientsData.findById(id);
+        if(optinalEntity.isPresent())
+            return new ResponseEntity<Cliente>(
+                optinalEntity.get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<Cliente>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity delete(@PathVariable int id){
+        clientsData.deleteById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Cliente> update(@RequestBody Cliente update){
+        Optional<Cliente> optinalEntity = clientsData.findById(update.getId());
+        if(optinalEntity.isPresent()){
+            Cliente current = optinalEntity.get();
+            current.setCalifSBS(update.getCalifSBS());
+            create(current);
+        }
+        return new ResponseEntity<Cliente>(HttpStatus.OK);
+    }
+
+    
+
 }
