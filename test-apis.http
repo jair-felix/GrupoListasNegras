@@ -1,2 +1,30 @@
-GET http://localhost:8080/api/clientes/ HTTP/1.1
+@host = https://listasnegras.herokuapp.com/
+
+
+GET {{host}}/api/clientes/ HTTP/1.1
 Accept: application/json
+
+
+POST {{host}}/api/clientes/ HTTP/1.1
+Content-Type:application/json
+
+{
+    "DNI": 23456712,
+    "Nombre": "Bruno",
+    "Apellidos": "Picaso",
+    "CalifSBS": "Mala Calificacion",
+    "precio": 67.00,
+    "status": "ACTIVO"
+}
+
+POST {{host}}/api/clientes/ HTTP/1.1
+Content-Type:application/json
+
+{
+    "precio": 65.00,
+    "status": null,
+    "nombre": "Bruno",
+    "apellidos": "Picaso",
+    "califSBS": "Mala Calificacion",
+    "dni": 23456712
+}

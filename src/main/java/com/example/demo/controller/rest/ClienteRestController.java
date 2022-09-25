@@ -15,11 +15,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import java.util.*;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import com.example.demo.model.Cliente;
 import com.example.demo.repository.ClienteRepository;
 
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "api/clientes", produces = "application/json")
 public class ClienteRestController {
 
