@@ -26,7 +26,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        sendGridAPI.send("jair_alarcon@usmp.pe","jair_alarcon@gmail.com","test","test");
+        sendGridAPI.send("jair_alarcon@usmp.pe","jovenvirus15@gmail.com","test","test");
         return HOME_INDEX;
     }
     

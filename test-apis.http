@@ -1,5 +1,14 @@
 @host = https://listasnegras.herokuapp.com/
 
+@reniec = https://app-reniec.herokuapp.com/
+
+
+
+
+GET {{reniec}}/api/persona/ HTTP/1.1
+Accept: application/json
+
+
 
 GET {{host}}/api/clientes/ HTTP/1.1
 Accept: application/json
