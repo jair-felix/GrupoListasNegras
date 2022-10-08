@@ -2,7 +2,13 @@
 
 @reniec = https://app-reniec.herokuapp.com/
 
+https://equifax-gnaranja-22.herokuapp.com/api/consulta/
 
+@pasarela = https://app-reniec.herokuapp.com/
+https://equifax-gnaranja-22.herokuapp.com/api/consulta
+
+GET {{pasarela}}/api/consulta HTTP/1.1
+Accept: application/json
 
 
 GET {{reniec}}/api/persona/ HTTP/1.1

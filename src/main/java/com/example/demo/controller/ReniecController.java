@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @Controller
 public class ReniecController {
 
-    private static final String HOME_INDEX ="visualizar"; 
+    private static final String HOME_INDEX ="reniec/visualizar"; 
 
     @GetMapping("/reniec/visualizar")
     public String index() {
