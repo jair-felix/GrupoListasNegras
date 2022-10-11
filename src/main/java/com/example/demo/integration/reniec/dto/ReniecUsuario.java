@@ -1,10 +1,7 @@
 package com.example.demo.integration.reniec.dto;
-
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.sql.Date;
-
-import org.springframework.beans.factory.annotation.Value;
+// import java.util.Date;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,9 +10,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Persona {
-
-    @JsonProperty("display_name")
+public class ReniecUsuario {
+    @JsonProperty("t_persona")
     private String dni;
     private String nombres;
     private String ApePat;

@@ -23,22 +23,19 @@ public class HomeController {
     private final SpotifyAPI spotifyAPI;
     private final SendGridAPI sendGridAPI;
 
-    private final Reniec reniec;
+    
 
-    public HomeController(SpotifyAPI spotifyAPI,SendGridAPI sendGridAPI,Reniec reniec ){
+    public HomeController(SpotifyAPI spotifyAPI,SendGridAPI sendGridAPI ){
         this.spotifyAPI = spotifyAPI;
         this.sendGridAPI = sendGridAPI;
-        this.reniec = reniec;
+        
     }
 
     @GetMapping("/")
     public String index(Model model) {
         //reniec.me(); 
 
-        Persona me = reniec.me(); 
-        model.addAttribute("me",me);
         
-        sendGridAPI.send("jair_alarcon@usmp.pe","jovenvirus15@gmail.com","test","test");
         return HOME_INDEX;
     }
     
