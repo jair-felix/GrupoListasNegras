@@ -54,24 +54,18 @@ public class PersonblockController {
 
 
     @PostMapping("/reniecPersona/Persona_Crear")
-//    public String createSubmitForm(Model model/*, @Valid Persona objPersona*/, BindingResult result){
     public String createSubmitForm(PersonaRec persona){
-//        model.getAttribute(MODEL_PERSONA);
         if(persona!=null){
             System.out.println("POST DNI es => "+persona.getDni());
             System.out.println("POST Nombre es => "+persona.getNombre());
             
             
             
-            //Usuario user=objCliente.getUser();
-            //user.setTipoUsuario("C");
+
             this.personasData.save(persona);
-            //model.addAttribute(MODEL_CONTACT, objCliente);
-//            model.addAttribute(MODEL_MESSAGE, "Se registró un cliente");
-        //return VIEW_LISTA;
+       
         }else{
-//            model.addAttribute(MODEL_MESSAGE, "No se registró un cliente");
-        //return VIEW_INDEX;
+
         }
         
         return VIEW_INDEX;
