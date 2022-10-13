@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'reniecPersona')}">
+
+<head>
+  <title>Catalogo</title>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} " />
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+
+<div id="panel">
+
+  <div class="row">
+    <div class="col-sm-10 mt-5">
+      <div class="form-group row">
+        <h1>Buscar Persona</h1>
+      </div>
+  </div>
+  
+    <form class="form-inline" th:action="@{/reniecPersona/index}" method="get">
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese su DNI" aria-label="Search" name="searchDNI">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+  <form th:each="persona : ${persona_encontrado}">
+  <div class="row">
+    <div class="col-sm-10 mt-5">
+      <div class="form-group row">
+        <h1>Datos de la Persona</h1>
+      </div>
+  </div>
+  
+    <div class="row text-left">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="form-group">
+            <label class="control-label" id="campo1">DNI</label><br/>
+            <input th:value="${persona.dni}" class="form-control" disabled/><br/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" id="campo1">Nombre</label><br/>
+            <input th:value="${persona.nombres}" class="form-control" disabled/><br/>
+           
+        </div>
+        <div class="form-group">
+            <label class="control-label" id="campo1">Apellido Paterno</label><br/>
+            <input th:value="${persona.ApePat}" class="form-control" disabled/><br/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" id="campo1">Apellido Materno</label><br/>
+            <input th:value="${persona.ApeMat}" class="form-control" disabled/><br/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" id="campo1">Dirección</label><br/>
+            <input th:value="${persona.direc}" class="form-control" disabled/><br/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" id="campo1">Género</label><br/>
+            <input th:value="${persona.genero}" class="form-control" disabled/><br/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" id="campo1">Fecha de cumpleaños</label><br/>
+            <div class="input-group date">
+                <input type="text" th:value="${persona.birthdate}" data-inputmask="'alias': 'datetime', 'inputFormat': 'dd/mm/yyyy'" autocomplete="off" class="form-control" disabled/>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                </div>
+            </div><br/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" id="campo1">Estado civil</label><br/>
+            <input th:value="${persona.estado}" class="form-control" disabled/><br/>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <template id="zoom-template">
+            <div id="zoom-template-wrapper">
+              <div id="zoom-container">
+                <!-- <h2 id="letra">@Model.Modelo_Producto.Descripcion</h2> -->
+                <input th:value="${persona.ApeMat}" class="form-control" disabled/><br/>
+              </div>
+            </div>
+          </template>
+          <section>
+            <div class="contenedorFotoProducto">
+              <div class="FotoProducto">
+                <img class="zoom-tmp" src="https://cyccomputer.pe/43368-large_default/monitor-led-27-benq-ex2780q-metallic-brown-black-2560x1440-hdmi-dp-5ms144hzfreesync-premium.jpg" draggable="false" alt="@Model.Modelo_Producto.Descripcion" title="${usuario2.ApePat}" id="letra">
+              </div>
+            </div>
+          </section>
+          <section>
+            <div style="text-align: center;">
+                <div class="MiniFotoProducto">
+                <img class="zoom-tmp" src="https://cyccomputer.pe/43368-large_default/monitor-led-27-benq-ex2780q-metallic-brown-black-2560x1440-hdmi-dp-5ms144hzfreesync-premium.jpg" style="max-height: 50px; max-width: 50px;" draggable="false" alt="${usuario2.ApePat}" title="@Model.Modelo_Producto.Descripcion" id="letra">
+                </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <a class="btn btn-success miLinkBlanco" asp-action="AnadirAlCarrito" asp-controller="Producto" data-toggle="tooltip" data-placement="bottom" title="Añadir @Model.Modelo_Producto.Descripcion"><!--<img src="/imagenes/button-AnadirAlCarrito.png">-->Añadir al carrito</a>
+        <a class="btn btn-secondary miLinkBlanco" asp-action="Listar" asp-controller="Producto" data-toggle="tooltip" data-placement="bottom" title="Salir"><!--<img src="../myresources/imagenes/button-salir.png">-->Salir</a>
+      </div>
+  </form>
+</div>
+
+<script th:src="@{/myresources/js/medium-zoom.min.js}"></script>
+<script th:src="@{/myresources/js/medium-zoom.min_yo.js}"></script>
+<script>
+  $('.input-group.date').datepicker({
+    autoclose: true,
+    todayHighlight: true
+  });
+</script>
+<script>
+  $(":input").inputmask();
+</script>
+</body>
+
+</html>

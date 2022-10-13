@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" 
+    th:replace="~{fragments/layout :: layout (~{::body},'personaapi')}">
+
+<body>
+ 
+    <div class="container">
+
+        <div class="row">
+          <div class="col-sm-10 mt-5">
+            <div class="form-group row">
+              <h1>Personas Bloqueadas</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <table class="table table-borderless table-hover text-center">
+                    <thead style="text-transform: uppercase;">
+                        <tr>
+                            <td scope="col">
+                                DNI
+                            </td>
+                            <td scope="col">
+                                Nombre
+                            </td>
+                            <td scope="col">
+                                Apellidos
+                            <td scope="col">
+                                MODIFICAR
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody th:each="persona : ${personas}">
+                        <tr>
+                            <td>
+                                <label th:text="${persona.dni}" class="control-label" />
+                            </td>
+                            <td>
+                                <label th:text="${persona.nombre}" class="control-label" />
+                            </td>
+                            <td>
+                                <label th:text="@{${persona.apellidopat}+' '+${persona.apellidomat}}" class="control-label" />
+                            </td>
+                            <td scope="row">
+                                <a class="btn btn-primary miLinkBlanco" th:href="@{'/reniecPersona/Personas_VerDetalle/__${persona.dni}__'}" data-placement="bottom" title="Ver Detalle" style="max-width: auto;"><img src="/imagenes/button-editar0.png">Ver Detalle</a>
+                                <a class="btn btn-danger miLinkBlanco" th:href="@{'/reniecPersona/Personas_Eliminar/__${persona.dni}__'}" data-placement="bottom" title="Eliminar Persona" style="max-width: auto;"><img src="/imagenes/button-eliminar0.png">Eliminar</a>
+                                </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

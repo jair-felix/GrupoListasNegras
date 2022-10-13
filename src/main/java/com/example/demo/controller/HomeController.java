@@ -11,6 +11,10 @@ import javax.validation.Valid;
 import com.example.demo.integration.sendgrid.*;
 import com.example.demo.integration.spotify.*;
 
+import com.example.demo.integration.reniec.*;
+import com.example.demo.integration.reniec.dto.*;
+
+
 @Controller
 public class HomeController {
 
@@ -19,13 +23,19 @@ public class HomeController {
     private final SpotifyAPI spotifyAPI;
     private final SendGridAPI sendGridAPI;
 
+    
+
     public HomeController(SpotifyAPI spotifyAPI,SendGridAPI sendGridAPI ){
         this.spotifyAPI = spotifyAPI;
         this.sendGridAPI = sendGridAPI;
+        
     }
 
     @GetMapping("/")
     public String index(Model model) {
+        //reniec.me(); 
+
+        
         return HOME_INDEX;
     }
     
